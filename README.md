@@ -10,5 +10,24 @@ Not working:
 * nVidia GPU (Intel IGF works well)
 * SD Card reader
 
+## Step 1:
+Download the files from the repository for the XPS 9550:  
+`git clone https://github.com/wmchris/DellXPS15-9550-OSX`
+
+## Step 2:
+Download the "patch" for the XPS 9560:  
+`git clone https://github.com/wmchris/DellXPS15-9560-OSX`
+
+## Step 3:
+replace all files from Step 1 with their supplied counterparts from Step 2. Make sure to overwrite supplied files and to merge the folders.
+```
+rsync -avh --progress ./DellXPS15-9560-OSX/ ./DellXPS15-9550-OSX/
+rm -Rf ./DellXPS15-9560-OSX
+mv DellXPS15-9550-OSX DellXPS15-9560-OSX
+```
+## Step 4:
+follow the [original 9550 tutorial][1].  
+https://github.com/wmchris/DellXPS15-9550-OSX/blob/master/Tutorial_10.12.md
+
 [1]:  https://github.com/wmchris/DellXPS15-9550-OSX/blob/master/Tutorial_10.12.md
 [2]:  https://wikidevi.com/wiki/Dell_Wireless_1830_(DW1830)
