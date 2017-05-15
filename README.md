@@ -16,7 +16,9 @@ These files are only suitable for Firmware Version 1.3.0 or below. If you run a 
 
 ## Step 1:
 Download the files from the repository for the XPS 9550:  
-`git clone https://github.com/wmchris/DellXPS15-9550-OSX`
+```
+git clone https://github.com/wmchris/DellXPS15-9550-OSX -b 10.12-BIOS1.2.21
+```
 
 ## Step 2:
 Download the "patch" for the XPS 9560:  
