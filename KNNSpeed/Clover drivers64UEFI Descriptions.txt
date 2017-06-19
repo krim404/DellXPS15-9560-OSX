@@ -1,0 +1,36 @@
+List of files that should be in CLOVER/drivers64UEFI:
+
+*************************************************************************
+
+AppleImageCodec-64.efi - FileVault 2
+
+AppleKeyAggregator-64.efi - FileVault 2
+
+AppleUITheme-64.efi - FileVault 2
+
+DataHubDxe-64.efi - To implement DataHub protocol support required by Mac OS.
+
+EmuVariableUefi-64.efi - Enables nvram.plist to be used instead of incompatible native system NVRAM.
+
+FSInject-64.efi - Enable Clover to inject kexts.
+
+FirmwareVolume-64.efi - FileVault 2
+
+HFSPlus.efi - HFS filesystem driver for Clover.
+
+OsxAptioFix2Drv-64.efi - Enables Mac OS booting American Megatrends, Inc. (AMI) UEFI.
+
+OsxFatBinaryDrv-64.efi - Enables FAT filesystem support
+
+SMCHelper-64.efi - FileVault 2
+
+*************************************************************************
+
+For an explanation on what some of them do:
+https://clover-wiki.zetam.org/What-is-what#EFI-drivers
+
+For some more explanations:
+http://www.insanelymac.com/forum/topic/282787-clover-v2-instructions/?p=1910955
+
+For an explanation of the FileVault 2 drivers:
+http://www.insanelymac.com/forum/topic/317290-filevault-2/

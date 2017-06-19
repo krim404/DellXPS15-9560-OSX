@@ -1,40 +1,20 @@
 # Dell XPS 15 - 9560-OSX
-This contains my modified files to run OS X 10.12.3, based on Andy^^s collection and my tutorial for the 9550.
+This repository contains the required files to make OSX 10.12 run on a Dell XPS 15 9560.  
+  
+ 
+## Deprecated
+My files are officially deprecated and are superseded by the tutorial of KNNSpeed. You can read his tutorial on [on insanelymac][5] or as PDF version [here][3]. I also attached his files to this repository as a mirror but i really suggest using the newest versions from his thread. You may still need some of the original files in case KNNSpeeds tutorial is not working for you (for example when your drive is not 4Kn compatible).  
+  
+The original tutorial is still available at [readme_old.md][4] and requires the files from the [Dell 9550 Sierra Installation Guide][1]. 
 
-You can follow my guide if you want to install Sierra on your own dell, but be aware, the tutorial is originally for the 9550.  
-Best way is to download the 9550 repository and then overwrite the files with the ones from this repository.  
-
-Link: [Dell 9550 Sierra Installation Guide][1].  
-    
-Not working:
+## Not working
 * Wifi (will never work, replacement required - [my suggestion][2])
 * nVidia GPU (Intel IGF works well)
 * SD Card reader
 
-## Firmware Update
-These files are only suitable for Firmware Version 1.3.0 or below. If you run a newer firmware, you may have to delete CLOVER/drivers64EFI/OSXAptioDrv-64.efi and replace it with OSXAptioDrv2-64.efi and add a customized slide to the boot arguments (for example slide=168 or slide=170). [More information][3]  
-
-## Step 1:
-Download the files from the repository for the XPS 9550:  
-```
-git clone https://github.com/wmchris/DellXPS15-9550-OSX -b 10.12-BIOS1.2.21
-```
-
-## Step 2:
-Download the "patch" for the XPS 9560:  
-`git clone https://github.com/wmchris/DellXPS15-9560-OSX`
-
-## Step 3:
-replace all files from Step 1 with their supplied counterparts from Step 2. Make sure to overwrite supplied files and to merge the folders.
-```
-rsync -avh --progress ./DellXPS15-9560-OSX/ ./DellXPS15-9550-OSX/
-rm -Rf ./DellXPS15-9560-OSX
-mv DellXPS15-9550-OSX DellXPS15-9560-OSX
-```
-## Step 4:
-follow the [original 9550 tutorial][1], but ignore the part with the ig-platform-id.   
-https://github.com/wmchris/DellXPS15-9550-OSX/blob/master/Tutorial_10.12.md
 
 [1]:  https://github.com/wmchris/DellXPS15-9550-OSX/blob/master/Tutorial_10.12.md
 [2]:  https://wikidevi.com/wiki/Dell_Wireless_1830_(DW1830)
-[3]:  http://www.insanelymac.com/forum/topic/319764-guide-dell-xps-15-9550-sierra-10122-quick-installation/page-29#entry2422676
+[3]:  KNNSpeed/Dell XPS 15 9560 Guide.pdf
+[4]:  README_OLD.md
+[5]:  http://www.insanelymac.com/forum/topic/324366-dell-xps-15-9560-4k-touch-1tb-ssd-32gb-ram-100-adobergb%E2%80%8B/

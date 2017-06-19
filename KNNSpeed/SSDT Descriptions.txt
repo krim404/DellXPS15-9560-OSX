@@ -1,0 +1,65 @@
+DELL BIOS 1.3.3 REQUIRED.
+
+DSLs are the source code of the corresponding AMLs. Look at each specific SSDT for much more specific details as to what they do, as well as where the requisite information to make and use them was found.
+
+*************************************************************************
+SYSTEM:
+*************************************************************************
+
+SSDT-DMAC - Exposes the DMA Controller to the system.
+
+SSDT-LPC - Correctly identifies the LPC bus to the system.
+
+SSDT-MCHC - Exposes the memory controller to the system.
+
+SSDT-SMBUS - Correctly identifies the SMBus to the system.
+
+*************************************************************************
+GRAPHICS:
+*************************************************************************
+
+SSDT-ALS0 - Adds a fake Ambient Light Sensor to save backlight info between reboots.
+
+SSDT-BRT6 - Maps the keyboard’s ACPI-managed brightness keys to PS2 codes for VoodooPS2Controller.kext.
+
+SSDT-IGPU - Adds properties to the Integrated Graphics device, which enables HDMI audio as well as properly display.
+
+SSDT-PNLF - Configuration for AppleBacklightInjector.kext.
+
+SSDT-RMDGPU - Power off the discrete GPU on boot, since Mac OS can’t use it.
+
+*************************************************************************
+AUDIO:
+*************************************************************************
+
+SSDT-HDEF - Add properties to the High Definition Audio Controller for audio and HDMI audio.
+
+*************************************************************************
+MISCELLANEOUS:
+*************************************************************************
+
+SSDT-Config - Provides configuration information for SSDT-HDEF, SSDT-IGPU, SSDT-PNLF, and SSDT-PTSWAK.
+
+SSDT-DeepIdle - Enable Deep Idle support for power savings.
+
+SSDT-HWP - Informs Mac OS that hardware P-states are supported.
+
+SSDT-FANS - Provides sensor information to HWMonitor via FakeSMC ACPISensors.
+
+SSDT-MEM2 - Defines a fixed memory region that gets used for something (hardly any information on it, but PNP0C01 is “System Board” in Windows so it has to do with motherboard resource allocation). Presumably, it’s related to the Integrated Graphics, as that’s the section in which Apple defines the MEM2 device.
+
+SSDT-PMCR - Complements the PPMC (Platform Power Management Controller) with the seemingly useless PMCR device that exists in Mac DSDTs. It doesn’t hurt anything to have this, and it can really only help, so it’s here.
+
+SSDT-PTSWAK - Powers on the discrete GPU before sleep and powers it off after wake to ensure the system can keep track of it.
+
+SSDT-TYPC - Enables Type-C support. USB-C works completely, Thunderbolt hot-plug should be avoided (it WILL crash the system in its current state).
+
+SSDT-UIAC - Defines the active USB ports for USBInjectAll.kext.
+
+SSDT-UPRW - Ensures that USB and LAN devices won’t instantly awaken the laptop when put to sleep.
+
+SSDT-USBX - Provides current delivery limits for USB devices. WARNING: Setting these too high could damage the USB subsystem.
+
+SSDT-XOSI - Informs the rest of the ACPI Tables to expose as much hardware as it would to the laptop’s primary operating system (Windows 10).
+
+SSDT-YTBT - Fixes a DSDT recursion issue that prevents Type-C hot-plug from working.

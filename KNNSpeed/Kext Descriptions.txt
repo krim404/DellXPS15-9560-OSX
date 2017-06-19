@@ -1,0 +1,69 @@
+Description of each kext used.
+
+*************************************************************************
+SYSTEM:
+*************************************************************************
+
+ACPIBatteryManager.kext - RehabMan’s battery status indicator, provides ACPI battery information to OS X. (https://github.com/RehabMan/OS-X-ACPI-Battery-Driver)
+
+**ACPISensors.kext (FakeSMC) - Modified to work with SSDT-FANS and HWMonitor, otherwise it would add extraneous fan entries. Specifically removed FANx entries, where x >=6, in the Info.plist.
+
+CPUSensors.kext (FakeSMC) - Provides HWMonitor with CPU sensors.
+
+**FakeSMC.kext - Provides a Mac-compatible System Management Controller to the system. Modifications include addition of RMde, MSLD, ALV0, ALRV, and AIL0 keys, set FNum to CA== (8) from AA== (0) to enable “fan sensor spoof” for HWMonitor, changed “compatible” to “smc-huronriver”, and changed REV, RVBF, and RVBF from the default MacPro3,1 value (ATAPAAAD = 01 30 0f 00 00 03) to MacBookPro13,3 value (AjgPAAAH = 02 38 0f 00 00 07).
+
+GPUSensors.kext (FakeSMC) - Provides HWMonitor with GPU sensors.
+
+LPCSensors.kext (FakeSMC) - Provides HWMonitor with LPC sensors.
+
+(All FakeSMC stuff from: http://www.hwsensors.com/releases)
+
+*************************************************************************
+GRAPHICS:
+*************************************************************************
+
+AppleBacklightInjector.kext - Provides proper panel brightness levels to AppleBacklight for native backlighting, the system platform of which is determined by SSDT-PNLF. (https://www.tonymacx86.com/threads/guide-laptop-backlight-control-using-applebacklightinjector-kext.218222/)
+
+CoreDisplayFixup.kext - Enables the Intel graphics to boot with UHD display. Bypasses the artificial pixel clock limit. (https://github.com/PMheart/CoreDisplayFixup)
+
+NvidiaGraphicsFixup.kext - Enables video out on the HDMI port by causing the board-id check in AppleGraphicsDevicePolicy to fail and default to the “none” ConfigMap. (https://sourceforge.net/projects/nvidiagraphicsfixup/)
+
+FakePCIID_Intel_HD_Graphics.kext (FakePCIID) - Enables Intel HD Graphics 630 with SSDT-IGPU.
+
+*************************************************************************
+AUDIO:
+*************************************************************************
+
+AppleALC.kext - Enables audio output for Realtek ALC298. (https://github.com/vit9696/AppleALC)
+
+CodecCommander.kext - Fixes noise/distortion on the headphone jack. (https://github.com/RehabMan/EAPD-Codec-Commander)
+
+FakePCIID_Intel_HDMI_Audio.kext (FakePCIID) - Enables Intel HDMI audio on the HDMI port with SSDT-HDEF.
+
+*************************************************************************
+NETWORKING:
+*************************************************************************
+
+BrcmFirmwareData.kext - The reliable version of the Bluetooth firmware data store, used to provide firmware to Broadcom Bluetooth devices such as the chip in the DW1830 (model BCM20703A1).
+
+BrcmPatchRAM2.kext - The firmware uploader required to apply the firmware from BrcmFirmwareData.kext to the Bluetooth card.
+
+(All Bluetooth stuff from: https://github.com/RehabMan/OS-X-BrcmPatchRAM)
+
+*************************************************************************
+MISCELLANEOUS:
+*************************************************************************
+
+FakePCIID.kext - Enables the other FakePCIID kexts to actually load.
+
+(All FakePCIID stuff from: https://github.com/RehabMan/OS-X-Fake-PCI-ID)
+
+Lilu.kext - Needed to load NvidiaGraphicsFixup.kext, CoreDisplayFixup.kext, and AppleALC.kext. (https://github.com/vit9696/Lilu)
+
+SATA-100-series-unsupported.kext - Enables proper identification of the Intel 10-series SATA controller. (https://www.tonymacx86.com/threads/guide-booting-the-os-x-installer-on-laptops-with-clover.148093/)
+
+USBInjectAll.kext - Enables the USB ports defined in SSDT-UIAC. (https://github.com/RehabMan/OS-X-USB-Inject-All)
+
+VoodooPS2Controller.kext - Enables Trackpad/Keyboard support, edited by Syscl to better match the regions on the XPS trackpad. (https://github.com/syscl/OS-X-Voodoo-PS2-Controller)
+
+**Denotes manually modded.
